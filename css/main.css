@@ -1,0 +1,153 @@
+:root {
+    --text-color: #ffffff;
+    --display-background: #2B2D2F;
+    --border: 1px solid #2B2D2F;
+    --border-radius: 10px;
+    --button-special: #3F4143;
+    --button-operator: #FD9E2B;
+    --button-number: #5F6062;
+}
+
+* {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns: 2fr 8fr 2fr;
+    align-items: center;
+}
+
+.calculator {
+    position: relative;
+
+    height: 80%;
+    width: 100%;
+    max-width: 780px;
+
+    margin: 0 auto;
+
+    box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.5);
+    border-radius: var(--border-radius);
+
+    color: var(--text-color);
+
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.toolbar {
+    position: absolute;
+
+    top: 5px;
+    left: 5px;
+
+    height: 20px;
+    padding: 5px;
+}
+
+.toolbar>div {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.toolbar>div:hover {
+    cursor: pointer;
+    filter: brightness(75%);
+}
+
+#red {
+    background-color: rgb(255, 69, 58);
+}
+
+#yellow {
+    background-color: rgb(255, 214, 10);
+}
+
+#green {
+    background-color: rgb(50, 215, 75);
+}
+
+.display {
+    display: flex;
+    flex-direction: column-reverse;
+
+    border: var(--border);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background-color: var(--display-background);
+    overflow: auto;
+
+    padding: 0.2em;
+
+    text-align: right;
+    font-size: 1.4em;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+
+.row.last {
+    grid-template-columns: 2fr repeat(2, 1fr);
+}
+
+.button {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 0.2em;
+    border: var(--border)
+}
+
+.button:active {
+    filter: brightness(85%);
+}
+
+.button.number {
+    background-color: var(--button-number);
+}
+
+.button.operator,
+#equals {
+    background-color: var(--button-operator);
+}
+
+.button.special {
+    background-color: var(--button-special);
+}
+
+.corner-left {
+    border-radius: 0 0 0 var(--border-radius);
+}
+
+.corner-right {
+    border-radius: 0 0 var(--border-radius) 0;
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+        grid-template-columns: 2fr 10fr 2fr;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .container {
+        grid-template-columns: 1fr 10fr 1fr;
+    }
+}
